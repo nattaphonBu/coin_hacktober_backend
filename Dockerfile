@@ -17,6 +17,6 @@ RUN poetry export -f requirements.txt --output requirements.txt --without-hashes
 RUN pip install -r requirements.txt
 
 # expose the port that uvicorn will run the app on
-EXPOSE 8080
+# EXPOSE 8080
 
-RUN chmod +x script_run_command_dev.sh
+# RUN chmod +x script_run_command_dev.sh
