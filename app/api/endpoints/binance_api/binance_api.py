@@ -8,30 +8,20 @@ router = APIRouter()
 
 
 @router.get("/get-coin")
-def get_coin_price():
-    result = get_coin_price_binance()
+def get_coin_price(is_high: bool, percent_change: int):
+    result = get_coin_price_binance(is_high, percent_change)
     return result
 
 
-def get_coin_price_binance():
+def get_coin_price_binance(is_high, percent_change):
     most_percent_change_list = []
     tickers = client.get_ticker()
-    for i in tickers:
-        if float(i["priceChangePercent"]) >= 50.0:
-            most_percent_change_list.append(i)
+    if is_high:
+        for i in tickers:
+            if float(i["priceChangePercent"]) >= percent_change:
+                most_percent_change_list.append(i)
+    else:
+        for i in tickers:
+            if float(i["priceChangePercent"]) <= percent_change:
+                most_percent_change_list.append(i)
     return most_percent_change_list
-
-    # if i['symbol'] == 'CAKEUSDT':
-    #     print(float(i["priceChangePercent"]))
-    #     return i
-    #     print(i)
-
-
-# print(tickers)
-
-
-# from forex_python.converter import CurrencyRates
-
-# c = CurrencyRates()
-
-# print(c.get_rate('USD', 'THB'))
