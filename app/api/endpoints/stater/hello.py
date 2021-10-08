@@ -5,10 +5,10 @@ router = APIRouter()
 
 
 @router.get("/")
-def read_root():
+def hello():
     return {"Hello": "World"}
 
 
 @router.post("get-name")
-def read_root(name):
+def get_name(name):
     return {f"Hello": "{name}"}
