@@ -13,6 +13,8 @@ class Settings(BaseSettings):
     # DB_NAME: str
     # DB_DRIVER: str
     # SQL_DRIVER: str
+    API_KEY: str
+    API_SECRET: str
 
     class Config:
         env_file = "./app/.env"
