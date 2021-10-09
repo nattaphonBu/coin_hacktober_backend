@@ -9,20 +9,26 @@ router = APIRouter()
 
 @router.get("/get-coin")
 def get_coin_price(is_high: bool, percent_change: int):
-    result = get_coin_price_binance(is_high, percent_change)
+    tickers = connect_binance_api()
+    result = get_coin_price_binance(tickers, is_high, percent_change)
     return result
 
 
-def get_coin_price_binance(is_high, percent_change):
-    most_percent_change_list = []
+def connect_binance_api():
     tickers = client.get_ticker()
+    return tickers
+
+
+def get_coin_price_binance(tickers, is_high, percent_change):
+    most_percent_change_list = []
     if is_high:
         for i in tickers:
             if float(i["priceChangePercent"]) >= percent_change:
                 most_percent_change_list.append(i)
     else:
+        print(-percent_change)
         for i in tickers:
-            if float(i["priceChangePercent"]) <= percent_change:
+            if float(i["priceChangePercent"]) <= -percent_change:
                 most_percent_change_list.append(i)
     return most_percent_change_list
 
