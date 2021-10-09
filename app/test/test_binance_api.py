@@ -687,3 +687,41 @@ def test_get_coin_price_low_should_return_list_of_low_price_more_50_percent():
         },
     ]
     assert actual == expected
+
+
+def test_get_price_of_cake_list_should_return_price_of_pair_cake_list():
+    coin_name = "CAKE"
+    actual = binance_api.get_specific_coin_price_binance(demo_data, coin_name)
+    expected = [
+        {
+            "symbol": "CAKEBNB",
+            "priceChange": "0.00222000",
+            "priceChangePercent": "4.983",
+            "weightedAvgPrice": "0.04555490",
+            "prevClosePrice": "0.04459000",
+            "lastPrice": "0.04677000",
+            "lastQty": "363.53000000",
+            "bidPrice": "0.04677000",
+            "bidQty": "959.57000000",
+            "askPrice": "0.04682000",
+            "askQty": "24.45000000",
+            "openPrice": "0.04455000",
+            "highPrice": "0.04758000",
+            "lowPrice": "0.04354000",
+            "volume": "564397.93000000",
+            "quoteVolume": "25711.09046400",
+            "openTime": 1633630765874,
+            "closeTime": 1633717165874,
+            "firstId": 7473561,
+            "lastId": 7483807,
+            "count": 10247,
+        }
+    ]
+    assert actual == expected
+
+
+def test_get_price_of_unknow_coin_should_return_empty_list():
+    coin_name = "SUPREMO"
+    actual = binance_api.get_specific_coin_price_binance(demo_data, coin_name)
+    expected = []
+    assert actual == expected
