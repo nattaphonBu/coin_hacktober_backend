@@ -35,13 +35,13 @@ def get_coin_price_binance(tickers, is_high, percent_change):
 
 @router.get("/get-specific-coin")
 def get_specific_coin(coin_name: str):
-    result = get_specific_coin_price_binance(coin_name)
+    tickers = connect_binance_api()
+    result = get_specific_coin_price_binance(tickers, coin_name)
     return result
 
 
-def get_specific_coin_price_binance(coin_name):
+def get_specific_coin_price_binance(tickers, coin_name):
     coin_list = []
-    tickers = client.get_ticker()
     for i in tickers:
         if coin_name.upper() in i["symbol"]:
             coin_list.append(i)
