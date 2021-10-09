@@ -7,7 +7,7 @@ How to use it
 - Install dependency
   `poetry install`
 - Copy env_example to .env
-  `COPY env_example .env`
+  `COPY env_example app/.env`
 - Change `API_KEY` , `API_SECRET` to key from binance api
 
 - Run Project 
