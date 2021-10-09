@@ -1,0 +1,12 @@
+API_V1_STR='/api/v1'
+ADMIN_EMAIL="deadpool@example.com"
+APP_NAME="CoinCrypto"
+DB_DRIVER="mssql+pyodbc"
+DB_USER="DBuser"
+DB_PASSWORD="DB_password"
+DB_HOST="DBHOST"
+DB_PORT=1433
+DB_NAME="DB_Name"
+SQL_DRIVER="?driver=ODBC+Driver+17+for+SQL+Server"
+API_KEY = "API_KEY"
+API_SECRET = "API_SECRET"
